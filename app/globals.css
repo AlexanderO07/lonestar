@@ -185,7 +185,8 @@
 .hero {
   position: relative; 
   z-index: 10; 
-  margin-top: -50%;
+  margin-top: -60%;
+  margin-bottom: 10%;
 }
 
 .wrapper {
