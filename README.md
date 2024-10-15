@@ -1,67 +1,52 @@
-# Next.js Multi-tenant Starter Template
+# LoneStar
+An AI-powered task management assistant that prioritizes tasks based on urgency, deadlines, and user habits.
 
-A minimalistic multi-tenant Next.js starter template with minimal setup and a modular design. Bring your own backend and database.
+## Task Prioritization Assistant (AI-powered To-Do List)
+## Usage
+You can find the live version of the app at [Demo](https://lonestar-beta.vercel.app).
 
-[Demo](https://stack-template.vercel.app/)
+### Overview
+This smart task management app helps users organize their tasks, but unlike traditional to-do lists, it uses AI to suggest which tasks should take priority based on factors like urgency, estimated effort, and the user’s past behavior. This project showcases the ability to work with AI/ML algorithms, backend APIs, and frontend frameworks.
 
-## Landing Page
+## Key Features
 
-<div align="center">
-<img src="./assets/landing-page.png" alt="Teams" width="600"/>
-</div>
+### Task Input and Management
+- Users can input tasks along with key details like due dates, estimated effort (e.g., time required), priority level (e.g., low, medium, high), and categories (e.g., work, personal, school).
+- Tasks can be organized into lists, and users can view tasks by day, week, or month.
+- Implement CRUD functionality (Create, Read, Update, Delete) with RESTful endpoints to manage tasks.
 
-## Dashboard
+### AI-Powered Task Prioritization
+#### Machine Learning Model
+- Ranks tasks based on urgency, importance, and deadlines.
+- Model trained to learn user behavior over time (e.g., how long they take to complete tasks, tasks they frequently delay, etc.).
+- Built complex recommendation system using various GPT API's such as OpenAI's GPT-3.5 or Cohere to predict task urgency or suggest optimal task sequences.
 
-<div align="center">
-<img src="./assets/dashboard-overview.png" alt="Teams" width="600"/>
-</div>
+### Task History and Habit Analysis
+- Store user’s completed tasks and track patterns over time (e.g., do they procrastinate on certain categories of tasks?).
+- Uses this data to adjust the AI model and give better prioritization suggestions in the future.
+- Visualize this analysis with a dashboard of productivity metrics (e.g., tasks completed per day/week, average task completion time).
 
-## Multi-tenancy (Teams)
+### Calendar Integration
+- Integrated with Google Calendar or Apple Calendar through external API's so tasks with deadlines automatically sync to the user’s calendar.
 
-<div align="center">
-<img src="./assets/team-switcher.png" alt="Teams" width="400"/>
-</div>
+### Push Notifications and Reminders
+- High-priority tasks or approaching deadlines should be notified to the user.
+- Notifications should be customizable (e.g., 1 day before deadline, 1 hour before deadline).
 
-## Account Settings
+### Mobile App Sync
+- Optionally create a cross-platform mobile app (using React Native or Flutter) to sync tasks between mobile devices and the web platform.
+- Allow users to manage tasks from either their computer or mobile phone.
 
-<div align="center">
-<img src="./assets/account-settings.png" alt="Teams" width="500"/>
-</div>
+## Technologies
+- **Frontend**: React for the web app (or React Native for mobile) with Tailwind CSS and PostCSS, using ShadcnUI for UI components.
+- **Backend**: Django REST framework for API development.
+- **Database**: Stack-Auth for storing tasks, user data, and historical information.
+- **AI/ML**: Chat AI APIs like OpenAI's GPT-3.5 or Cohere for implementing the machine learning model.
+- **Third-party APIs**: Google Calendar API for syncing tasks and time, and optionally Firebase for push notifications and user authentication.
 
-## Getting Started
+## Future Intentions
+- Develop and integrate a more advanced machine learning model to accurately predict task completion times and deliver personalized recommendations tailored to individual user behavior.
+- Deploy the application on a registered website domain to enhance accessibility and provide a professional online presence.
 
-1. Clone the repository
-
-    ```bash
-    git clone git@github.com:stack-auth/stack-template.git
-    ```
-
-2. Install dependencies
-
-    ```bash
-    npm install
-    ```
-
-3. Register an account on [Stack Auth](https://stack-auth.com), copy the keys from the dashboard, and paste them into the `.env.local` file. Then, enable "client team creation" on the team settings tab.
-
-    If you want to learn more about Stack Auth or self-host it, check out the [Docs](https://docs.stack-auth.com) and [GitHub](https://github.com/stack-auth/stack).
-
-4. Start the development server and go to [http://localhost:3000](http://localhost:3000)
-
-    ```bash
-    npm run dev 
-    ```
-
-## Features & Tech Stack
-
-- Next.js 14 app router
-- TypeScript
-- Tailwind & Shadcn UI
-- Stack Auth
-- Multi-tenancy (teams/orgs)
-- Dark mode
-
-## Inspired by
-
-- [Shadcn UI](https://github.com/shadcn-ui/ui)
-- [Shadcn Taxonomy](https://github.com/shadcn-ui/taxonomy)
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/AlexanderO07/LoneStar/blob/main/LICENSE) file for more details.

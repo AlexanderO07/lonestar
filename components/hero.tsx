@@ -3,8 +3,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export function Hero(props: {
-  capsuleText: string;
-  capsuleLink: string;
   title: string;
   subtitle: string;
   credits?: React.ReactNode;
@@ -14,15 +12,8 @@ export function Hero(props: {
   secondaryCtaLink: string;
 }) {
   return (
-    <section className="space-y-6 py-32 md:py-48 lg:py-52">
+    <section className="hero space-y-6 py-32 md:py-48 lg:py-52 ">
       <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-        <Link
-          href={props.capsuleLink}
-          className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
-          target="_blank"
-        >
-          {props.capsuleText}
-        </Link>
         <h1 className="font-heading text-3xl sm:text-5xl lg:text-7xl">
           {props.title}
         </h1>
@@ -30,7 +21,7 @@ export function Hero(props: {
           {props.subtitle}
         </p>
         <div className="flex gap-4 flex-wrap justify-center">
-          <Link
+          <Link 
             href={props.primaryCtaLink}
             className={cn(buttonVariants({ size: "lg" }))}
           >
@@ -46,10 +37,6 @@ export function Hero(props: {
             {props.secondaryCtaText}
           </Link>
         </div>
-
-        {props.credits && (
-          <p className="text-sm text-muted-foreground mt-4">{props.credits}</p>
-        )}
       </div>
     </section>
   );

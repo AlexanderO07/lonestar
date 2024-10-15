@@ -63,6 +63,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -78,6 +79,7 @@
   overflow: hidden;
   z-index: 9999;
 }
+
 .loader::after {
   content: '';
   width: 40%;
@@ -89,6 +91,21 @@
   animation: animloader 1s linear infinite;
   @apply bg-primary;
 }
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  z-index: 99;
+}
+
 
 @media (min-width: 800px) {
   .loader::after {
@@ -102,8 +119,165 @@
     left: 0;
     transform: translateX(-100%);
   }
+
   100% {
     left: 100%;
     transform: translateX(0%);
   }
+}
+
+.screen-container {
+  position: relative;
+}
+
+.logo {
+  color: var(--logo-color);
+  /* Initial subtle glow */
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+/* Hover effect for color shift and enhanced glow */
+.logo:hover {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7),
+               0 0 30px rgba(255, 223, 0, 0.9),   /* Gold */
+               0 0 40px rgba(138, 43, 226, 0.9), /* Purple */
+               0 0 50px rgba(50, 205, 50, 0.9);  /* Green */
+  animation: colorShift 3s infinite;
+}
+
+@keyframes colorShift {
+  0% { color: gold; }
+  33% { color: purple; }
+  66% { color: green; }
+  100% { color: var(--logo-color); }
+}
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.hover-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+  animation: shadowPulse 0.5s infinite;
+}
+
+/* Theme-based variables */
+:root[data-theme='dark'] {
+  --logo-color: white;
+}
+
+:root[data-theme='light'] {
+  --logo-color: black;
+}
+
+.hero {
+  position: relative; 
+  z-index: 10; 
+  margin-top: -50%;
+}
+
+.wrapper {
+  pointer-events: none;
+  margin-top: 2rem;
+  max-width: 1536px;
+  margin-inline: auto;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  z-index: -1; 
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+
+.itemLeft,
+.itemRight {
+  width: 200px;
+  height: 100px;
+  opacity: 0.23;
+  position: absolute;
+  background-color: transparent; 
+  border-radius: 6px;
+  border: 2px dashed grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-timing-function: linear;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  color: rgb(136, 136, 136);
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.4s ease-in-out
+}
+
+.itemLeft {
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+}
+
+.itemRight {
+  right: max(calc(200px * 8), calc(100% + 200px));
+  animation-name: scrollRight;
+}
+
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+@keyframes scrollRight {
+  to {
+    right: -200px;
+  }
+}
+
+/* Animation delays for each item */
+.item1 { animation-delay: calc(30s / 8 * (8 - 1) * -1); }
+.item2 { animation-delay: calc(30s / 8 * (8 - 2) * -1); }
+.item3 { animation-delay: calc(30s / 8 * (8 - 3) * -1); }
+.item4 { animation-delay: calc(30s / 8 * (8 - 4) * -1); }
+.item5 { animation-delay: calc(30s / 8 * (8 - 5) * -1); }
+.item6 { animation-delay: calc(30s / 8 * (8 - 6) * -1); }
+.item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
+.item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: transparent; } 
+}
+
+.ogreeting {    
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid ; 
+  width: fit-content;
+  
+  /* Apply the typewriter animation */
+  animation: typewriter 1.05s steps(40, end), blinkCursor 0.75s step-end infinite;
+  animation-delay: 0s, 3s; 
 }

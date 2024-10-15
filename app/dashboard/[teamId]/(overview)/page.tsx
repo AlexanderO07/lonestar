@@ -1,6 +1,10 @@
+"use client";
+import React from "react";
 import { Metadata } from "next";
+import { Greetings } from "@/app/dashboard/[teamId]/(overview)/greetings";
+import { RecentTasks } from "@/app/dashboard/[teamId]/(overview)/recent-tasks";
+import { useUser } from "@stackframe/stack";
 
-import { RecentSales } from "@/app/dashboard/[teamId]/(overview)/recent-sales";
 import {
   Card,
   CardContent,
@@ -10,24 +14,26 @@ import {
 } from "@/components/ui/card";
 import { Graph } from "./graph";
 
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
-};
-
 export default function DashboardPage() {
+  const user = useUser() || null; // Use useUser hook to fetch the current user
+
   return (
     <>
       <div className="flex-col">
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight">Overview</h2>
+            <h2
+              className="text-2xl font-bold tracking-tight"
+              style={{ display: "inline-flex" }}
+            >
+              <Greetings user={user} />
+            </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  Total Revenue
+                  Completed Tasks
                 </CardTitle>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -39,20 +45,20 @@ export default function DashboardPage() {
                   strokeWidth="2"
                   className="h-4 w-4 text-muted-foreground"
                 >
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  <path d="M4 12L10 18L20 6" />
                 </svg>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">$45,231.89</div>
+                <div className="text-2xl font-bold">26</div>
                 <p className="text-xs text-muted-foreground">
-                  +20.1% from last month
+                  ↑ 75% from last week
                 </p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">
-                  Subscriptions
+                  Team Tasks
                 </CardTitle>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,15 +76,15 @@ export default function DashboardPage() {
                 </svg>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">+2350</div>
-                <p className="text-xs text-muted-foreground">
-                  +180.1% from last month
-                </p>
+                <div className="text-2xl font-bold">+83</div>
+                <p className="text-xs text-muted-foreground">5 High Priority</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Memory Used
+                </CardTitle>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -94,16 +100,17 @@ export default function DashboardPage() {
                 </svg>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">+12,234</div>
-                <p className="text-xs text-muted-foreground">
-                  +19% from last month
-                </p>
+                <div className="text-2xl font-bold">0%</div>
+                <p className="text-xs text-muted-foreground">No task memory</p>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardHeader
+                className="flex flex-row items-center justify-between space-y-0 pb-2"
+                style={{ color: "red" }}
+              >
                 <CardTitle className="text-sm font-medium">
-                  Active Now
+                  Highest Priority
                 </CardTitle>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,9 +126,11 @@ export default function DashboardPage() {
                 </svg>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">+573</div>
+                <div className="text-2xl font-bold" style={{ color: "red" }}>
+                  Due: 8:35PM{" "}
+                </div>
                 <p className="text-xs text-muted-foreground">
-                  +201 since last hour
+                  In 3 hours and 23 minutes
                 </p>
               </CardContent>
             </Card>
@@ -137,13 +146,13 @@ export default function DashboardPage() {
             </Card>
             <Card className="col-span-3">
               <CardHeader>
-                <CardTitle>Recent Sales</CardTitle>
+                <CardTitle>Upcoming Tasks</CardTitle>
                 <CardDescription>
-                  You made 265 sales this month.
+                  5 in High Priority. Keep Going!
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <RecentSales />
+                <RecentTasks />
               </CardContent>
             </Card>
           </div>

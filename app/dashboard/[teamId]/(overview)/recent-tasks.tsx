@@ -4,7 +4,8 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 
-export function RecentSales() {
+// all fallbacks for now. replace with user and or teammate user with recent tasks
+export function RecentTasks() {
   return (
     <div className="space-y-8">
       <div className="flex items-center">
@@ -48,7 +49,7 @@ export function RecentSales() {
         <Avatar className="h-9 w-9">
           <AvatarImage src="/avatars/04.png" alt="Avatar" />
           <AvatarFallback>WK</AvatarFallback>
-        </Avatar>
+        </Avatar>3
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">William Kim</p>
           <p className="text-sm text-muted-foreground">will@email.com</p>
