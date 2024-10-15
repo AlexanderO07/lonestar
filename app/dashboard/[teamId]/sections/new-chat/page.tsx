@@ -47,7 +47,7 @@ export default function NewChatPage() {
   return (
     <div className="page-container">
       <title>New Chat</title>
-      <h1 className="welcome-container">I'm Flow! <br/> How can I help you today?</h1>
+      <h1 className="welcome-container">I&apos;m Flow! <br /> How can I help you today?</h1>
       <div className="chatcontainer">
         <div className="input-container">
         <Mic />
