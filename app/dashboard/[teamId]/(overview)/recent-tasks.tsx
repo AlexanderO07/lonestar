@@ -49,7 +49,7 @@ export function RecentTasks() {
         <Avatar className="h-9 w-9">
           <AvatarImage src="/avatars/04.png" alt="Avatar" />
           <AvatarFallback>WK</AvatarFallback>
-        </Avatar>3
+        </Avatar>
         <div className="ml-4 space-y-1">
           <p className="text-sm font-medium leading-none">William Kim</p>
           <p className="text-sm text-muted-foreground">will@email.com</p>

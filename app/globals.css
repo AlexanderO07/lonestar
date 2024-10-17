@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'SFBold';  /* Name the font */
+  src: url('/fonts/SFPRODISPLAYBOLD.OTF') format('opentype'); /* Point to your font */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFRegular';  /* Name the font */
+  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype'); /* Point to your font */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFMedium';  /* Name the font */
+  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype'); /* Point to your font */
+  font-style: normal;
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -29,6 +48,8 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --svg-stroke-color: black; 
+    --svg-fill-color: black; 
   }
 
   .dark {
@@ -56,12 +77,15 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --svg-stroke-color: white;
+  --svg-fill-color: white; 
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    /* font-family: 'SFRegular', Arial, Helvetica, sans-serif; */
   }
 
   body {
@@ -69,12 +93,27 @@
   }
 }
 
+.forceFront {
+  z-index: 99999999999999999999;
+}
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
 .loader {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  position: fixed;
   background: transparent;
   overflow: hidden;
   z-index: 9999;
@@ -89,22 +128,34 @@
   left: 0;
   box-sizing: border-box;
   animation: animloader 1s linear infinite;
-  @apply bg-primary;
+  background: var(--primary);
 }
 
-.loader-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  mix-blend-mode: difference;
-  overflow: hidden;
-  z-index: 99;
+.spinLogo {
+  animation: rotate 1s linear infinite;
+  margin-left: 10px; /* Adjust as needed to add spacing */
 }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animloader {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%);
+  }
+}
+
 
 
 @media (min-width: 800px) {
@@ -182,6 +233,11 @@
   --logo-color: black;
 }
 
+.bigwords {
+  font-family: 'SFBold', sans-serif;
+  font-weight: 600;
+}
+
 .hero {
   position: relative; 
   z-index: 10; 
@@ -207,12 +263,11 @@
   );
 }
 
-
 .itemLeft,
 .itemRight {
   width: 200px;
   height: 100px;
-  opacity: 0.23;
+  opacity: 0.4;
   position: absolute;
   background-color: transparent; 
   border-radius: 6px;
@@ -226,7 +281,7 @@
   color: rgb(136, 136, 136);
   padding: 10px;
   box-sizing: border-box;
-  transition: transform 0.4s ease-in-out
+  transition: transform 0.4s ease-in-out;
 }
 
 .itemLeft {
@@ -281,4 +336,8 @@
   /* Apply the typewriter animation */
   animation: typewriter 1.05s steps(40, end), blinkCursor 0.75s step-end infinite;
   animation-delay: 0s, 3s; 
+}
+
+.padding {
+  padding-top: 5vh;
 }

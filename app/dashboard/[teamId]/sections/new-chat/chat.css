@@ -1,6 +1,7 @@
+/* Make sure body can handle the chat moving */
 .body {
     overflow: auto;
-    position: absolute;
+    position: relative; /* Ensure elements inside are relative to body */
 }
 
 .welcome-container {
@@ -10,7 +11,6 @@
     align-items: center;
     text-align: center;
 }
-
 
 .welcometext {
     margin-bottom: -20px;
@@ -24,6 +24,23 @@
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid;
+    font-size: large;
+}
+
+.fade {
+    animation: fade 0.5 ease-in-out;
+}
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.user-messages:hover{
+    scrollbar-color: lightgrey transparent;
 }
 
 .chatcontainer {
@@ -32,7 +49,13 @@
     padding: 20px;
     margin-left: 10px;
     border-radius: 10px;
-    transition: transform 0.5s ease;
+    position: relative; 
+    transition: margin 0.7s ease-in-out; 
+    overflow: auto;
+}
+
+.chatcontainer.move-bottom {
+    margin-top: calc(100vh - 265px); /*how far chatbox moves down*/
 }
 
 .input-container {
@@ -53,10 +76,12 @@
 
 .chatbox {
     text-align: start;
+    cursor: pointer;
     padding: 7.5px;
     margin-left: 2px;
     border: none;
     flex-grow: 1.5;
+    font-size: var(--auto + 1); /* Fixed the font-size variable */
     border-radius: 27px;
     outline: none;
     min-height: 40px;
@@ -64,7 +89,6 @@
     overflow: hidden;
     background-color: transparent;
 }
-
 
 .send-icon {
     background: none;
@@ -77,6 +101,13 @@
 }
 
 .send-icon.disabled {
-    cursor: not-allowed; /* Change cursor to indicate unclickable */
-    opacity: 0.5; /* TO make the icon appear grayed out */
-  }
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5; /* To make the icon appear grayed out */
+}
+
+button:hover .h-6 {
+    transform: scale(1.2); /* Slightly increase size */
+    transition: transform 0.1s ease-in-out; /* Smooth scaling */
+}
+

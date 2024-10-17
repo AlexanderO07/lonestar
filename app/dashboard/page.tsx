@@ -7,3 +7,7 @@ export const metadata = {
 export default function Dashboard() {
   return <PageClient />;
 }
+
+export const metadataDashboard = {
+  title: "LoneStar - Dashboard",
+};

@@ -157,7 +157,7 @@ export default function SidebarLayout(props: {
         <SidebarContent items={props.items} sidebarTop={props.sidebarTop} basePath={props.basePath} />
       </div>
       <div className="flex flex-col flex-grow w-0">
-        <div className="h-14 border-b flex items-center justify-between sticky top-0 bg-white dark:bg-black z-10 px-4 md:px-6">
+        <div className="h-14 border-b flex items-center justify-between sticky top-0 bg-white dark:bg-black z-10 px-4 md:px-6 forceFront">
           <div className="hidden md:flex">
             <HeaderBreadcrumb baseBreadcrumb={props.baseBreadcrumb} basePath={props.basePath} items={props.items} />
           </div>

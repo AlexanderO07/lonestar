@@ -38,7 +38,7 @@ export function PageClient() {
         <div className="max-w-xs w-full">
           <h1 className="text-center text-2xl font-semibold">Welcome!</h1>
           <p className="text-center text-gray-500">
-            Create a task topic to get started
+            Create a team topic to get started
           </p>
           {error && <p className="text-red-500 text-center">{error}</p>} {/* Error message display */}
           <form className="mt-4" onSubmit={handleSubmit}>
@@ -50,7 +50,7 @@ export function PageClient() {
                 onChange={(e) => settopicDisplayName(e.target.value)}
               />
             </div>
-            <Button className="mt-4 w-full">Create Chat</Button>
+            <Button className="mt-4 w-full">Create Dashboard</Button>
           </form>
         </div>
       </div>
